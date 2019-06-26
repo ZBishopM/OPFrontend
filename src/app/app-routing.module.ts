@@ -22,11 +22,11 @@ const routes: Routes = [
   path: 'match',
   loadChildren:'./match/match.module#MatchModule'
 },
-{
-    path:'',
-    redirectTo: '',
-    pathMatch: 'full'
-}
+// {
+//     path:'',
+//     redirectTo: '',
+//     pathMatch: 'full'
+// }
 ];
 
 @NgModule({
