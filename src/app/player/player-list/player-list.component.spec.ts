@@ -5,7 +5,7 @@ import { PlayerListComponent } from './player-list.component';
 describe('PlayerListComponent', () => {
   let component: PlayerListComponent;
   let fixture: ComponentFixture<PlayerListComponent>;
-
+  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PlayerListComponent ]
