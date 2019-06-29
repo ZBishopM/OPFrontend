@@ -22,6 +22,7 @@ export class PlayerCreateComponent implements OnInit {
   Title = 'New Player'
   teamId =null;
   Teams:any=[]
+  
   constructor(public dialog:MatDialog , private playerService:PlayerService,
     @Inject(MAT_DIALOG_DATA) public data: any, private teamService:TeamService) { }
 

@@ -26,8 +26,8 @@ export class TournamentCreateComponent implements OnInit {
   Title='New Tournament'
   modeId=null;
   Modes:any=[]
-  playerId:null;
-  Players:any[];
+  playerId:null = null;
+  Players:any=[];
 
   constructor(public dialog:MatDialog,private tournamentService:TournamentService,
     @Inject(MAT_DIALOG_DATA) public data: any,private modeService: ModeService ) { }
