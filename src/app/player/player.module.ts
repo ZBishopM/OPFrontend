@@ -31,7 +31,6 @@ import {MatSelectModule} from '@angular/material/select';
     MatTableModule,
     MatIconModule,
     MatSelectModule,
-   // HttpClientModule,
     MatCardModule,MatDialogModule,MatButtonModule
   ],
   entryComponents:[RepDialogComponent],
