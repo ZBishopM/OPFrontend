@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import{FormControl,Validators} from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { MatDialog, MatDialogRef} from "@angular/material";
 import { RepDialogComponent } from '../rep-dialog/rep-dialog.component';
 import { TournamentService } from '../tournament.service';
 import { PlayerService } from 'src/app/player/player.service';
+import {MAT_DIALOG_DATA} from '@angular/material';
 import { ModeService } from 'src/app/mode/mode.service';
 
 @Component({

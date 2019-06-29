@@ -35,16 +35,16 @@
             <input matInput placeholder="Host"[(ngModel)]="player_id" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
 
-<!--
-        <mat-form-field>
-            <mat-label>Mode</mat-label>
-            <mat-select [(ngModel)]="modeId" name="mode">
-              <mat-option *ngFor="let mode of Modes" [value]="mode.id">
-                {{mode.format}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
- -->
+<!--  -->
+<mat-form-field>
+    <mat-label>Mode</mat-label>
+    <mat-select [(ngModel)]="modeId" name="mode">
+      <mat-option *ngFor="let mode of Modes" [value]="mode.id">
+        {{mode.format}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
 
       </form>
     </mat-card-content>
