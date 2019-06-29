@@ -5,6 +5,7 @@ import {HttpClientModule} from "@angular/common/http"
 import { TournamentRoutingModule } from './tournament-routing.module';
 import { TournamentListComponent } from './tournament-list/tournament-list.component';
 
+
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import { MatTabsModule } from "@angular/material/tabs";
@@ -16,6 +17,7 @@ import { RepDialogComponent } from './rep-dialog/rep-dialog.component';
 import { TournamentService } from './tournament.service';
 import { MatIconModule, MatSelectModule } from '@angular/material';
 import { TournamentEditComponent } from './tournament-edit/tournament-edit.component';
+
 
 @NgModule({
   declarations: [TournamentListComponent, TournamentCreateComponent, RepDialogComponent, TournamentEditComponent],

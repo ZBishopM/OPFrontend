@@ -8,14 +8,15 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import {MatMenuModule } from '@angular/material/menu'
 
-
+import { TournamentDetailComponent } from '../app/tournament/tournament-detail/tournament-detail.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TournamentDetailComponent
   ],
   imports: [
     BrowserModule,

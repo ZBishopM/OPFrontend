@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild, Output,EventEmitter } from '@angular/core';
+import {TournamentDetailComponent} from '../tournament-detail/tournament-detail.component';
 import {TournamentCreateComponent} from '../tournament-create/tournament-create.component';
 import {MatDialog,MatTableDataSource} from '@angular/material';
 import {MatSort} from '@angular/material/sort';
 import {TournamentService} from '../tournament.service';
 import {Tournament} from 'src/app/class/tournament';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tournament-list',
@@ -13,7 +15,9 @@ import {Tournament} from 'src/app/class/tournament';
 export class TournamentListComponent implements OnInit {
   displayedColumns: string[]=['position','name','Game','Date','Winner','playerId','nTeams','modeId','edit'];
   dataSource:any=[]
-  constructor(public dialog:MatDialog,private tournamentService:TournamentService) { }
+  //departments =[{"id":1,"name":"Hola"}]
+
+  constructor(private router: Router, public dialog:MatDialog,private tournamentService:TournamentService) { }
 
   @ViewChild(MatSort,{static: true}) sort: MatSort;
   @Output() object = new EventEmitter<any>()
@@ -49,5 +53,8 @@ export class TournamentListComponent implements OnInit {
       console.log(result)
       this.listData()
     })
+  }
+  onSelect(element){
+    this.router.navigate(['/tournament',element.id]);
   }
 }
