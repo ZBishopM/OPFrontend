@@ -11,7 +11,7 @@ import { Team } from 'src/app/class/team';
   styleUrls: ['./team-list.component.css']
 })
 export class TeamListComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'nmembers', 'tournament'];
+  displayedColumns: string[] = ['position','name', 'nmembers', 'tournament','edit'];
   dataSource:any = []
 
   constructor(public dialog:MatDialog,private teamService:TeamService) { }
