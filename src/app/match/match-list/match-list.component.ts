@@ -8,7 +8,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
   styleUrls: ['./match-list.component.css']
 })
 export class MatchListComponent implements OnInit {
-  displayedColumns: string[] = ['Fase', 'Winner' ,'Team 1', 'Team 2', 'Tournament'];
+  displayedColumns: string[] = ['Fase', 'Winner' ,'Team1', 'Team2', 'Tournament'];
   dataSource:any = []
   constructor(private matchService:MatchService) { }
 
