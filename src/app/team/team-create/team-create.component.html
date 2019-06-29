@@ -22,7 +22,7 @@
       <mat-form-field class="full-width">
           <input matInput placeholder="Name" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
-        <mat-form-field>
+        <mat-form-field *ngIf="data!=undefined">
           <mat-label>Tournament</mat-label>
           <mat-select [(ngModel)]="tournamentId" name="tournament">
             <mat-option *ngFor="let tournament of Tournaments" [value]="tournament.id">
