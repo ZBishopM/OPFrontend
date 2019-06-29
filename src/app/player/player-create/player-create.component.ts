@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from "@angular/material";
 import { RepDialogComponent } from '../rep-dialog/rep-dialog.component';
 import { PlayerService } from '../player.service';
 import {MAT_DIALOG_DATA} from '@angular/material';
+import { TeamService } from 'src/app/team/team.service';
 
 
 @Component({
@@ -18,7 +19,10 @@ export class PlayerCreateComponent implements OnInit {
   EgamePreference: string = '';
   gamePreference:string = '';
   Title = 'New Player'
-  constructor(public dialog:MatDialog , private playerService:PlayerService,@Inject(MAT_DIALOG_DATA) public data: any) { }
+  teamId =null;
+  Teams:any=[]
+  constructor(public dialog:MatDialog , private playerService:PlayerService,
+    @Inject(MAT_DIALOG_DATA) public data: any, private teamService:TeamService) { }
 
   ngOnInit() {
     this.emailFormControl = new FormControl('',[
@@ -31,6 +35,11 @@ export class PlayerCreateComponent implements OnInit {
       this.gamePreference = this.data.gamePreferences
       this.Title = 'Update Player'
     }
+    this.teamService.getTeams().subscribe(data=>{
+      console.log("data",data)
+      this.Teams = data;
+    }
+    )
   }
 
   openRepDialong(){
@@ -45,11 +54,15 @@ export class PlayerCreateComponent implements OnInit {
   }
 
   save(){
+    console.log(this.teamId)
     console.log(this.name)
     console.log(this.gamePreference)
     let obj:any = {}
     obj.name = this.name
     obj.gamePreferences = this.gamePreference
+    let teamT:any = {}
+    teamT.id = this.teamId
+    obj.team = teamT
     this.playerService.postPlayer(obj).subscribe(data=>{
       console.log(data)
     })
