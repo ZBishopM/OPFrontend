@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import{FormControl,Validators} from '@angular/forms';
-import { MatDialog, MatDialogRef } from "@angular/material";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { RepDialogComponent } from '../rep-dialog/rep-dialog.component';
 import { TournamentService } from '../tournament.service';
 import { Player } from 'src/app/class/player';
@@ -25,14 +25,23 @@ export class TournamentCreateComponent implements OnInit {
   Eplayer:Player;
   mode:Mode;
   Emode:Mode;
+  Title='New Tournament'
 
-  constructor(public dialog:MatDialog,private tournamentService:TournamentService) { }
+  constructor(public dialog:MatDialog,private tournamentService:TournamentService,@Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     this.emailFormControl=new FormControl('',[
       Validators.required,
       Validators.email
-    ])
+    ]);
+    console.log(this.data)
+    if(this.data!=undefined){
+      this.name=this.data.name
+      this.game=this.data.game
+      this.nteams=this.data.nteams
+      this.date=this.data.date
+      this.Title='Update Tournament'
+    }
   }
 
   openRepDialong(){
@@ -54,9 +63,13 @@ export class TournamentCreateComponent implements OnInit {
     obj.name=this.name
     obj.game=this.game
     obj.date=this.date
+    obj.nteams=this.nteams
     this.tournamentService.postTournament(obj).subscribe(data=>{
       console.log(data)
     })
     
+  }
+  update(){
+    console.log("gg")
   }
 }
