@@ -28,25 +28,23 @@
           <mat-form-field class="full-width">
             <input matInput placeholder="Date"[(ngModel)]="date" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
+
+        <!--
         <mat-form-field class="full-width">
             <input matInput placeholder="Teams"[(ngModel)]="nteams" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
-        <mat-form-field class="full-width">
-            <input matInput placeholder="Host"[(ngModel)]="player_id" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-
-
+            -->
         <mat-form-field>
-          <mat-label>Mode</mat-label>
-          <mat-select [(ngModel)]="modeId" name="mode">
-            <mat-option *ngFor="let mode of Modes" [value]="mode.id">
-              {{mode.format}}
+          <mat-label>Host</mat-label>
+          <mat-select [(ngModel)]="playerId" name="player">
+            <mat-option *ngFor="let player of Players" [value]="player.id">
+              {{player.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
 
-<!--  
+
 <mat-form-field>
     <mat-label>Mode</mat-label>
     <mat-select [(ngModel)]="modeId" name="mode">
@@ -55,7 +53,7 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
--->
+
 
       </form>
     </mat-card-content>
