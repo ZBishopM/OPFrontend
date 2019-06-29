@@ -17,6 +17,7 @@ export class TeamCreateComponent implements OnInit {
   Id: number = 0;
   name: string = '';
   Ename : string = '';
+  nmembers:number=0;
   Title = 'New Team'
   tournamentId =null;
   Tournaments:any=[]
@@ -69,10 +70,11 @@ export class TeamCreateComponent implements OnInit {
     let obj:any = {}
     obj.name = this.name
     obj.id = this.Id
+    obj.nmembers=this.nmembers
     let tournamentT:any = {}
     tournamentT.id = this.tournamentId
     obj.tournament = tournamentT
-    this.teamService.postTeam(obj).subscribe(data=>{
+    this.teamService.putTeam(obj).subscribe(data=>{
       console.log(data)
     })
   }
