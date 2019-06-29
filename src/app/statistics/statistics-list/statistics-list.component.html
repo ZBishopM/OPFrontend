@@ -8,13 +8,14 @@
             </mat-form-field>
       <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
         <!-- Position Column -->
-        <ng-container matColumnDef="position">
+        <ng-container matColumnDef="id">
 
           <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
           <td mat-cell *matCellDef="let element">   {{element.id}} </td>
         </ng-container>
 
         <!-- Name Column -->
+<<<<<<< HEAD
         <ng-container matColumnDef="match">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Match </th>
           <td mat-cell *matCellDef="let element"> {{element.match}} </td>
@@ -30,6 +31,38 @@
         <ng-container matColumnDef="assits">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Assists </th>
           <td mat-cell *matCellDef="let element"> {{element.assits}} </td>
+=======
+        <ng-container matColumnDef="player">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Player </th>
+          <td mat-cell *matCellDef="let element"> {{element.player.name}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="match">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Match </th>
+          <td mat-cell *matCellDef="let element"> {{element.match.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="team">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Team </th>
+          <td mat-cell *matCellDef="let element"> {{element.player.team.name}} </td>
+        </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="damage">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Damage </th>
+          <td mat-cell *matCellDef="let element"> {{element.damage}} </td>
+        </ng-container>
+        <ng-container matColumnDef="assists">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Assists </th>
+          <td mat-cell *matCellDef="let element"> {{element.assits}} </td>
+        </ng-container>
+        <ng-container matColumnDef="kills">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Kills </th>
+          <td mat-cell *matCellDef="let element"> {{element.kills}} </td>
+        </ng-container>
+        <ng-container matColumnDef="deaths">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Deaths </th>
+          <td mat-cell *matCellDef="let element"> {{element.deaths}} </td>
+>>>>>>> 5397c0bd2cf04ab6ae7c56b5920bff852a8045ef
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
