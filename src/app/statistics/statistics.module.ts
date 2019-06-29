@@ -29,7 +29,7 @@ import { MatIconModule } from '@angular/material';
    // HttpClientModule,
     MatCardModule,MatDialogModule,MatButtonModule
   ],
-  entryComponents:[RepDialogComponent],
+  entryComponents:[],
   providers:[StatisticsService]
 })
 export class StatisticsModule { }
