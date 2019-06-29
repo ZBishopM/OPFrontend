@@ -30,7 +30,7 @@ export class TournamentCreateComponent implements OnInit {
   Players:any=[];
 
   constructor(public dialog:MatDialog,private tournamentService:TournamentService,
-    @Inject(MAT_DIALOG_DATA) public data: any,private modeService: ModeService ) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,private modeService: ModeService,private playerService:PlayerService ) { }
 
   ngOnInit() {
     this.emailFormControl=new FormControl('',[
@@ -39,16 +39,22 @@ export class TournamentCreateComponent implements OnInit {
     ]);
     console.log(this.data)
     if(this.data!=undefined){
+      this.Id=this.data.id
       this.name=this.data.name
       this.game=this.data.game
       this.nteams=this.data.nteams
       this.date=this.data.date
       this.modeId=this.data.mode ? this.data.mode.id : null;
+      this.playerId=this.data.player ? this.data.player.id : null;
       this.Title='Update Tournament'
     }
     this.modeService.getModes().subscribe(data=>{
       console.log("data",data)
       this.Modes = data;
+    })
+    this.playerService.getPlayers().subscribe(data=>{
+      console.log("data",data)
+      this.Players=data;
     })
   }
 
@@ -63,6 +69,7 @@ export class TournamentCreateComponent implements OnInit {
   }
   save(){
     console.log(this.modeId)
+    console.log(this.playerId)
     console.log(this.name)
     console.log(this.game)
     console.log(this.date)
@@ -74,8 +81,12 @@ export class TournamentCreateComponent implements OnInit {
     obj.date=this.date
     obj.nteams=this.nteams
     let modeT:any ={}
+    let playerT:any={}
     modeT.id=this.modeId
     obj.mode=modeT
+    playerT.id=this.playerId
+    obj.player=playerT
+    
     this.tournamentService.postTournament(obj).subscribe(data=>{
       console.log(data)
     })
@@ -83,12 +94,16 @@ export class TournamentCreateComponent implements OnInit {
   }
   update(){
     let obj: any={}
+    obj.date=this.date
     obj.name=this.name
     obj.id=this.Id
     obj.game=this.game
     let modeT:any={}
+    let playerT:any={}
     modeT.id=this.modeId
     obj.mode=modeT
+    playerT.id=this.playerId
+    obj.player=playerT
     this.tournamentService.putTournament(obj).subscribe(data=>{
       console.log(data)
     })

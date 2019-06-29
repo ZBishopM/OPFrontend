@@ -15,7 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import { RepDialogComponent } from './rep-dialog/rep-dialog.component';
 import { TournamentService } from './tournament.service';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatSelectModule } from '@angular/material';
 import { TournamentEditComponent } from './tournament-edit/tournament-edit.component';
 
 @NgModule({
