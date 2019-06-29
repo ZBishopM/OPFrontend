@@ -6,7 +6,10 @@ import { TournamentService } from '../tournament.service';
 import { PlayerService } from 'src/app/player/player.service';
 import {MAT_DIALOG_DATA} from '@angular/material';
 import { ModeService } from 'src/app/mode/mode.service';
-
+//Import core module
+import {  ViewContainerRef } from '@angular/core';
+//Import ToastsManager
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-tournament-create',
   templateUrl: './tournament-create.component.html',
@@ -31,7 +34,12 @@ export class TournamentCreateComponent implements OnInit {
   minDate:Date = new Date();
   constructor(public dialog:MatDialog,private tournamentService:TournamentService,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private modeService: ModeService,private playerService:PlayerService ) { }
+    private modeService: ModeService,private playerService:PlayerService,
+    private toastService:ToastrService)
+    // public toastr: ToastsManager, vcr: ViewContainerRef ) { 
+      {
+      // this.toastr.setRootViewContainerRef(vcr);
+    }
 
   ngOnInit() {
     this.emailFormControl=new FormControl('',[
@@ -100,7 +108,14 @@ export class TournamentCreateComponent implements OnInit {
     obj.player=playerT
     
     this.tournamentService.postTournament(obj).subscribe(data=>{
-      console.log(data)
+      let res:any = data
+      console.log("res",data)
+      if(res==true) this.toastService.success('You are awesome!', 'Success!');
+      if(res==false) this.toastService.error('This is not good!', 'Oops!');
+      
+    },err=>{
+      console.log("err", err)
+      this.toastService.error('OOF', `${err.error.mensaje}`);
     })
     
   }
@@ -118,6 +133,10 @@ export class TournamentCreateComponent implements OnInit {
     obj.player=playerT
     this.tournamentService.putTournament(obj).subscribe(data=>{
       console.log(data)
+      let res:any = data
+      if(res==true) this.toastService.success('You are awesome!', 'Success!');
+      if(res==false) this.toastService.error('This is not good!', 'Oops!');
+      if(res!=true&&res!=false)this.toastService.error('OOF', 'Oops!');
     })
     
   }
