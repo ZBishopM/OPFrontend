@@ -11,7 +11,6 @@ import { MatTabsModule } from "@angular/material/tabs";
 import {MatDialogModule} from '@angular/material/dialog'
 import { MatInputModule } from "@angular/material/input";
 import {MatCardModule} from '@angular/material/card';
-import { RepDialogComponent } from './rep-dialog/rep-dialog.component';
 import { StatisticsService } from './statistics.service';
 import { MatIconModule } from '@angular/material';
 @NgModule({
@@ -29,7 +28,7 @@ import { MatIconModule } from '@angular/material';
    // HttpClientModule,
     MatCardModule,MatDialogModule,MatButtonModule
   ],
-  entryComponents:[RepDialogComponent],
+  entryComponents:[],
   providers:[StatisticsService]
 })
 export class StatisticsModule { }

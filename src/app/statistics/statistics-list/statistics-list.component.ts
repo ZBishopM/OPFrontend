@@ -11,7 +11,7 @@ import { Statistics } from 'src/app/class/statistics';
   styleUrls: ['./statistics-list.component.css']
 })
 export class StatisticsListComponent implements OnInit {
-  displayedColumns: string[] = ['match', 'damage', 'assits', 'player','kills','deaths'];
+  displayedColumns: string[] = ['id', 'player','match','team', 'damage', 'assists','kills','deaths'];
   dataSource:any = []
 
   constructor(public dialog:MatDialog,private statisticsService:StatisticsService) { }
