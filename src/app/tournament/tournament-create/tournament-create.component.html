@@ -36,6 +36,16 @@
         </mat-form-field>
 
 
+        <mat-form-field>
+            <mat-label>Mode</mat-label>
+            <mat-select [(ngModel)]="modeId" name="mode">
+              <mat-option *ngFor="let mode of Modes" [value]="mode.id">
+                {{mode.format}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
       </form>
     </mat-card-content>
     <mat-card-actions>

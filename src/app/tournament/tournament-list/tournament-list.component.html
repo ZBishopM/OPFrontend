@@ -51,7 +51,7 @@
           <!-- modeId Column -->
           <ng-container matColumnDef="modeId">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Modo </th>
-            <td mat-cell *matCellDef="let element"> {{element.mode.format}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.mode ? element.mode.format : element.mode}} </td>
           </ng-container>
 
           <ng-container matColumnDef="edit">

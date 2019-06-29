@@ -16,4 +16,7 @@ export class TournamentService {
   postTournament(data:Tournament){
     return this.http.post<Tournament>(this.apiUrl,data)
   }
+  putTournament(data:Tournament){
+    return this.http.put<Tournament>(this.apiUrl,data)
+  }
 }
