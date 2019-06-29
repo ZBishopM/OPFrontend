@@ -72,7 +72,7 @@ export class TeamCreateComponent implements OnInit {
     let tournamentT:any = {}
     tournamentT.id = this.tournamentId
     obj.tournament = tournamentT
-    this.teamService.postTeam(obj).subscribe(data=>{
+    this.teamService.putTeam(obj).subscribe(data=>{
       console.log(data)
     })
   }
