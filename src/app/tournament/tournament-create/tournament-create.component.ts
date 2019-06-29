@@ -30,7 +30,7 @@ export class TournamentCreateComponent implements OnInit {
   Players:any[];
 
   constructor(public dialog:MatDialog,private tournamentService:TournamentService,
-    @Inject(MAT_DIALOG_DATA) public data: any,private modeService: ModeService ) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,private modeService: ModeService,private playerService:PlayerService ) { }
 
   ngOnInit() {
     this.emailFormControl=new FormControl('',[
@@ -44,6 +44,7 @@ export class TournamentCreateComponent implements OnInit {
       this.nteams=this.data.nteams
       this.date=this.data.date
       this.modeId=this.data.mode ? this.data.mode.id : null;
+      this
       this.Title='Update Tournament'
     }
     this.modeService.getModes().subscribe(data=>{
