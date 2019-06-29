@@ -10,6 +10,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 export class MatchListComponent implements OnInit {
   displayedColumns: string[] = ['Fase', 'Winner' ,'Team1', 'Team2', 'Tournament'];
   dataSource:any = []
+  Title = "Match"
   constructor(private matchService:MatchService) { }
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
