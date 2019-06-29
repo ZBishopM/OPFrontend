@@ -11,17 +11,19 @@ export class MatchTournamentComponent implements OnInit {
 
   displayedColumns: string[] = ['Fase', 'Winner' ,'Team1', 'Team2', 'Tournament'];
   dataSource:any = []
-  Title = "Match"
+  Title = "Match Tournament"
+  id = 0;
   constructor(private matchService:MatchService,private route: ActivatedRoute) { }
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   ngOnInit() {
     this.listData()
-    let id = parseInt(this.route.snapshot.paramMap.get('id'));
-    console.log(id);
+    let idT = parseInt(this.route.snapshot.paramMap.get('id'));
+    console.log(idT);
+    this.id = idT
   }
   listData(){
-    this.matchService.getMatchs().subscribe(data=>{this.dataSource = new MatTableDataSource(data)})
+    this.matchService.getMatchsTournament(this.id).subscribe(data=>{this.dataSource = new MatTableDataSource(data)})
     //console.log(this.dataSource)
   }
   applyFilter(filterValue: string) {
