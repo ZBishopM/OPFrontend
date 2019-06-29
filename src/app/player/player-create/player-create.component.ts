@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl,Validators } from "@angular/forms";
 import { MatDialog, MatDialogRef } from "@angular/material";
 import { RepDialogComponent } from '../rep-dialog/rep-dialog.component';
 import { PlayerService } from '../player.service';
+import {MAT_DIALOG_DATA} from '@angular/material';
 
 
 @Component({
@@ -16,13 +17,20 @@ export class PlayerCreateComponent implements OnInit {
   Ename : string = '';
   EgamePreference: string = '';
   gamePreference:string = '';
-  constructor(public dialog:MatDialog , private playerService:PlayerService) { }
+  Title = 'New Player'
+  constructor(public dialog:MatDialog , private playerService:PlayerService,@Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     this.emailFormControl = new FormControl('',[
       Validators.required,
       Validators.email
     ]);
+    console.log(this.data)
+    if(this.data!=undefined) {
+      this.name = this.data.name
+      this.gamePreference = this.data.gamePreferences
+      this.Title = 'Update Player'
+    }
   }
 
   openRepDialong(){
@@ -46,5 +54,7 @@ export class PlayerCreateComponent implements OnInit {
       console.log(data)
     })
   }
-
+  update(){
+    console.log("gg")
+  }
 }

@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>{{Title}}</mat-card-title>
+  <mat-card-title>New Team</mat-card-title>
   <mat-card-content>
     <form>
       <!-- <mat-form-field class="full-width">
@@ -23,12 +23,11 @@
           <input matInput placeholder="Name" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
       <mat-form-field class="full-width">
-            <input matInput placeholder="GamePreference"[(ngModel)]="gamePreference" [ngModelOptions]="{standalone: true}">
+            <input matInput placeholder="NMembers"[(ngModel)]="nmembers" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="save()" *ngIf="data==undefined">Save</button>
-      <button mat-raised-button color="primary" (click)="update()" *ngIf="data!=undefined" >Update</button>
+      <button mat-raised-button color="primary" (click)="save()" >Save</button>
   </mat-card-actions>
 </mat-card>
