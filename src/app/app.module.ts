@@ -16,8 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from "ngx-toastr";
 @NgModule({
   declarations: [
-    AppComponent,
-    TournamentDetailComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

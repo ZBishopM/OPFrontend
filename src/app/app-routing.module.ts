@@ -17,9 +17,9 @@ const routes: Routes = [
     path: 'tournament',
     loadChildren:'./tournament/tournament.module#TournamentModule'
 },
-{
-    path: 'tournament/:id', component: TournamentDetailComponent
-},
+// {
+//     path: 'tournament/:id', component: TournamentDetailComponent
+// },
 {
   path: 'statistics',
   loadChildren:'./statistics/statistics.module#StatisticsModule'
@@ -28,11 +28,11 @@ const routes: Routes = [
   path: 'match',
   loadChildren:'./match/match.module#MatchModule'
 },
-// {
-//     path:'',
-//     redirectTo: '',
-//     pathMatch: 'full'
-// }
+{
+    path:'',
+    redirectTo: '',
+    pathMatch: 'full'
+}
 ];
 
 @NgModule({
