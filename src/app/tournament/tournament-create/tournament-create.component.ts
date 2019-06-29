@@ -22,11 +22,11 @@ export class TournamentCreateComponent implements OnInit {
   Enteams:number = 0;
   date: Date ;
   Edate:Date;
-  playerId:null;
-  Players:any[];
   Title='New Tournament'
   modeId=null;
   Modes:any=[]
+  playerId:null;
+  Players:any[];
 
   constructor(public dialog:MatDialog,private tournamentService:TournamentService,
     @Inject(MAT_DIALOG_DATA) public data: any,private modeService: ModeService ) { }
