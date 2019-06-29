@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output,EventEmitter } from '@angular/core';
 import {TournamentCreateComponent} from '../tournament-create/tournament-create.component';
 import {MatDialog,MatTableDataSource} from '@angular/material';
 import {MatSort} from '@angular/material/sort';
@@ -16,7 +16,7 @@ export class TournamentListComponent implements OnInit {
   constructor(public dialog:MatDialog,private tournamentService:TournamentService) { }
 
   @ViewChild(MatSort,{static: true}) sort: MatSort;
-
+  @Output() object = new EventEmitter<any>()
 
 
 
@@ -33,7 +33,17 @@ export class TournamentListComponent implements OnInit {
   openCreate(){
     const dialog = this.dialog.open(TournamentCreateComponent,{
       width:'700px',
-      data:{}
+      data:null
+    })
+    dialog.afterClosed().subscribe(result=>{
+      console.log(result)
+      this.listData()
+    })
+  }
+  editTournament(elem){
+    const dialog = this.dialog.open(TournamentCreateComponent,{
+      width:'700px',
+      data:elem
     })
     dialog.afterClosed().subscribe(result=>{
       console.log(result)

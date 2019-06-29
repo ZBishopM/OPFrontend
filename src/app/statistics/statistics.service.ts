@@ -13,6 +13,4 @@ export class StatisticsService {
   getStatistics(){
     return this.http.get<Statistics[]>(this.apiUrl);
   }
-
-
 }
