@@ -25,7 +25,7 @@ export class PlayerListComponent implements OnInit {
   }
   listData(){
     this.playerService.getPlayers().subscribe(data=>{this.dataSource = new MatTableDataSource(data)})
-    console.log(this.dataSource)
+    //console.log(this.dataSource)
   }
   applyFilter(filterValue: string) {
     console.log(filterValue)

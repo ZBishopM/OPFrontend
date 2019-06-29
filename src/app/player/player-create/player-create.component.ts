@@ -16,6 +16,7 @@ export class PlayerCreateComponent implements OnInit {
   emailFormControl: FormControl;
   name: string = '';
   Ename : string = '';
+  Id: number = 0;
   EgamePreference: string = '';
   gamePreference:string = '';
   Title = 'New Player'
@@ -33,7 +34,9 @@ export class PlayerCreateComponent implements OnInit {
     if(this.data!=undefined) {
       this.name = this.data.name
       this.gamePreference = this.data.gamePreferences
+      this.Id = this.data.id
       this.Title = 'Update Player'
+      this.teamId = this.data.team ? this.data.team.id : null;
     }
     this.teamService.getTeams().subscribe(data=>{
       console.log("data",data)
@@ -68,6 +71,15 @@ export class PlayerCreateComponent implements OnInit {
     })
   }
   update(){
-    console.log("gg")
+    let obj:any = {}
+    obj.name = this.name
+    obj.id = this.Id
+    obj.gamePreferences = this.gamePreference
+    let teamT:any = {}
+    teamT.id = this.teamId
+    obj.team = teamT
+    this.playerService.putPlayer(obj).subscribe(data=>{
+      console.log(data)
+    })
   }
 }
