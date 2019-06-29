@@ -11,7 +11,7 @@ export class StatisticsService {
   constructor(private http: HttpClient) { }
 
   getStatistics(){
-    return this.http.get<Statistics>(this.apiUrl);
+    return this.http.get<Statistics[]>(this.apiUrl);
   }
 
 

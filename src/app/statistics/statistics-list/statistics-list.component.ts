@@ -18,7 +18,7 @@ export class StatisticsListComponent implements OnInit {
 
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  @Output() object = new EventEmitter<any>()
+
 
   ngOnInit() {
     this.listData()
