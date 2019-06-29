@@ -15,8 +15,9 @@ import {MatCardModule} from '@angular/material/card';
 import { RepDialogComponent } from './rep-dialog/rep-dialog.component';
 import { PlayerService } from './player.service';
 import { MatIconModule } from '@angular/material';
+import { PlayerUpdateComponent } from './player-update/player-update.component';
 @NgModule({
-  declarations: [PlayerListComponent, PlayerCreateComponent, RepDialogComponent],
+  declarations: [PlayerListComponent, PlayerCreateComponent, RepDialogComponent, PlayerUpdateComponent],
   imports: [
     CommonModule,
     PlayerRoutingModule,

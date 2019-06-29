@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { PlayerCreateComponent } from '../player-create/player-create.component';
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { MatSort} from '@angular/material/sort';
@@ -18,7 +18,7 @@ export class PlayerListComponent implements OnInit {
 
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-
+  @Output() object = new EventEmitter<any>()
 
   ngOnInit() {
       this.listData()
@@ -33,7 +33,17 @@ export class PlayerListComponent implements OnInit {
   openCreate(){
     const dialog = this.dialog.open(PlayerCreateComponent,{
       width:'700px',
-      data: {}
+      data: null
+    })
+    dialog.afterClosed().subscribe(result=>{
+      console.log(result)
+      this.listData()
+    })
+  }
+  editPlayer(elem){
+    const dialog = this.dialog.open(PlayerCreateComponent,{
+      width:'700px',
+      data: elem
     })
     dialog.afterClosed().subscribe(result=>{
       console.log(result)
