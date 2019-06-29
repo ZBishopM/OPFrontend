@@ -15,8 +15,9 @@ import {MatCardModule} from '@angular/material/card';
 import { RepDialogComponent } from './rep-dialog/rep-dialog.component';
 import { TeamService } from './team.service';
 import { MatIconModule } from '@angular/material';
+import { TeamUpdateComponent } from './team-update/team-update.component';
 @NgModule({
-  declarations: [TeamListComponent, TeamCreateComponent, RepDialogComponent],
+  declarations: [TeamListComponent, TeamCreateComponent, RepDialogComponent, TeamUpdateComponent],
   imports: [
     CommonModule,
     TeamRoutingModule,
