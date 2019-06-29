@@ -11,7 +11,7 @@ import { Player } from 'src/app/class/player';
   styleUrls: ['./player-list.component.css']
 })
 export class PlayerListComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'gamePreferences', 'team'];
+  displayedColumns: string[] = ['position', 'name', 'gamePreferences', 'team','edit'];
   dataSource:any = []
 
   constructor(public dialog:MatDialog,private playerService:PlayerService) { }

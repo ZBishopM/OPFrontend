@@ -14,6 +14,7 @@ import { MatInputModule } from "@angular/material/input";
 import {MatCardModule} from '@angular/material/card';
 import { RepDialogComponent } from './rep-dialog/rep-dialog.component';
 import { PlayerService } from './player.service';
+import { MatIconModule } from '@angular/material';
 @NgModule({
   declarations: [PlayerListComponent, PlayerCreateComponent, RepDialogComponent],
   imports: [
@@ -25,6 +26,7 @@ import { PlayerService } from './player.service';
     ReactiveFormsModule,
     MatInputModule,
     MatTableModule,
+    MatIconModule,
    // HttpClientModule,
     MatCardModule,MatDialogModule,MatButtonModule
   ],

@@ -41,7 +41,7 @@ export class PlayerCreateComponent implements OnInit {
     console.log(this.gamePreference)
     let obj:any = {}
     obj.name = this.name
-    obj.gamePreference = this.gamePreference
+    obj.gamePreferences = this.gamePreference
     this.playerService.postPlayer(obj).subscribe(data=>{
       console.log(data)
     })
