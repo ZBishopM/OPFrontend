@@ -14,7 +14,8 @@ import { MatInputModule } from "@angular/material/input";
 import {MatCardModule} from '@angular/material/card';
 import { RepDialogComponent } from './rep-dialog/rep-dialog.component';
 import { TournamentService } from './tournament.service';
-import { MatIconModule, MatSelectModule } from '@angular/material';
+import { MatIconModule, MatSelectModule, MatNativeDateModule } from '@angular/material';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { TournamentEditComponent } from './tournament-edit/tournament-edit.component';
 
 @NgModule({
@@ -29,7 +30,10 @@ import { TournamentEditComponent } from './tournament-edit/tournament-edit.compo
     MatInputModule,
     MatTableModule,
     MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatSelectModule,
+    
     MatCardModule,MatDialogModule,MatButtonModule
   ],
   entryComponents:[RepDialogComponent],

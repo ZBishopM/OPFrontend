@@ -17,6 +17,7 @@ export class TeamCreateComponent implements OnInit {
   Id: number = 0;
   name: string = '';
   Ename : string = '';
+  nmembers:number=0;
   Title = 'New Team'
   tournamentId =null;
   Tournaments:any=[]
@@ -69,9 +70,14 @@ export class TeamCreateComponent implements OnInit {
     let obj:any = {}
     obj.name = this.name
     obj.id = this.Id
+    obj.nmembers=this.nmembers
     let tournamentT:any = {}
     tournamentT.id = this.tournamentId
     obj.tournament = tournamentT
+<<<<<<< HEAD
+=======
+    if(this.tournamentId==null) delete obj.tournament
+>>>>>>> 0fa04035268e410d32479000a35eef4dda73eab2
     this.teamService.putTeam(obj).subscribe(data=>{
       console.log(data)
     })

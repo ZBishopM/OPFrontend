@@ -22,6 +22,7 @@ export class PlayerCreateComponent implements OnInit {
   Title = 'New Player'
   teamId =null;
   Teams:any=[]
+
   constructor(public dialog:MatDialog , private playerService:PlayerService,
     @Inject(MAT_DIALOG_DATA) public data: any, private teamService:TeamService) { }
 
@@ -78,6 +79,7 @@ export class PlayerCreateComponent implements OnInit {
     let teamT:any = {}
     teamT.id = this.teamId
     obj.team = teamT
+    if(this.teamId==null) delete obj.tournament
     this.playerService.putPlayer(obj).subscribe(data=>{
       console.log(data)
     })

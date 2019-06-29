@@ -25,10 +25,15 @@
         <mat-form-field class="full-width">
               <input matInput placeholder="Game"[(ngModel)]="game" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Date"[(ngModel)]="date" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
 
+          <!-- <mat-form-field class="full-width">
+            <input matInput placeholder="Date"[(ngModel)]="date" [ngModelOptions]="{standalone: true}">
+        </mat-form-field> -->
+        <mat-form-field>
+          <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date" [ngModelOptions]="{standalone: true}">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker ></mat-datepicker>
+        </mat-form-field>
         <!--
         <mat-form-field class="full-width">
             <input matInput placeholder="Teams"[(ngModel)]="nteams" [ngModelOptions]="{standalone: true}">
