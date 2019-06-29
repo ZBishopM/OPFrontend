@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { TeamCreateComponent } from '../team-create/team-create.component';
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { MatSort} from '@angular/material/sort';
@@ -16,12 +16,14 @@ export class TeamListComponent implements OnInit {
 
   constructor(public dialog:MatDialog,private teamService:TeamService) { }
 
+
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @Output() object = new EventEmitter<any>()
 
   ngOnInit() {
     this.listData()
   }
-  listData(){
+  listData() {
     this.teamService.getTeams().subscribe(data=>{this.dataSource = new MatTableDataSource(data)})
   }
   applyFilter(filterValue: string) {
@@ -31,12 +33,21 @@ export class TeamListComponent implements OnInit {
   openCreate(){
     const dialog = this.dialog.open(TeamCreateComponent,{
       width:'700px',
-      data: {}
+      data: null
     })
     dialog.afterClosed().subscribe(result=>{
       console.log(result)
       this.listData()
     })
   }
-
+  editTeam(elem){
+    const dialog = this.dialog.open(TeamCreateComponent,{
+      width:'700px',
+      data: elem
+    })
+    dialog.afterClosed().subscribe(result=>{
+      console.log(result)
+      this.listData()
+    })
+  }
 }

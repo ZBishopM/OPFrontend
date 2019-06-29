@@ -16,4 +16,7 @@ export class TeamService {
   postTeam(data:Team){
     return this.http.post<Team>(this.apiUrl,data)
   }
+  putTeam(data:Team){
+    return this.http.put<Team>(this.apiUrl,data)
+  }
 }

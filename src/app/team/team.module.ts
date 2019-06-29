@@ -15,9 +15,10 @@ import {MatCardModule} from '@angular/material/card';
 import { RepDialogComponent } from './rep-dialog/rep-dialog.component';
 import { TeamService } from './team.service';
 import { MatIconModule } from '@angular/material';
-import { TeamUpdateComponent } from './team-update/team-update.component';
+import {MatSelectModule} from '@angular/material/select';
+//import { TeamUpdateComponent } from './team-update/team-update.component';
 @NgModule({
-  declarations: [TeamListComponent, TeamCreateComponent, RepDialogComponent, TeamUpdateComponent],
+  declarations: [TeamListComponent, TeamCreateComponent, RepDialogComponent],
   imports: [
     CommonModule,
     TeamRoutingModule,
@@ -28,6 +29,7 @@ import { TeamUpdateComponent } from './team-update/team-update.component';
     MatInputModule,
     MatTableModule,
     MatIconModule,
+    MatSelectModule,
    // HttpClientModule,
     MatCardModule,MatDialogModule,MatButtonModule
   ],

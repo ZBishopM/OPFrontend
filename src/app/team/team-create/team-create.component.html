@@ -25,9 +25,18 @@
       <mat-form-field class="full-width">
             <input matInput placeholder="NMembers"[(ngModel)]="nmembers" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
+        <mat-form-field>
+          <mat-label>Tournament</mat-label>
+          <mat-select [(ngModel)]="tournamentId" name="tournament">
+            <mat-option *ngFor="let team of Tournaments" [value]="tournament.id">
+              {{tournament.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="save()" >Save</button>
+    <button mat-raised-button color="primary" (click)="save()" *ngIf="data==undefined">Save</button>
+    <button mat-raised-button color="primary" (click)="update()" *ngIf="data!=undefined" >Update</button>
   </mat-card-actions>
 </mat-card>
