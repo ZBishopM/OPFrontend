@@ -6,6 +6,7 @@ import {MAT_DIALOG_DATA} from '@angular/material';
 import { TeamService } from '../team.service';
 import { TournamentService } from 'src/app/tournament/tournament.service';
 
+
 @Component({
   selector: 'app-team-create',
   templateUrl: './team-create.component.html',
@@ -30,8 +31,8 @@ export class TeamCreateComponent implements OnInit {
     console.log(this.data)
     if(this.data!=undefined) {
       this.name = this.data.name
-      //this.Id = this.data.id
-      //this.Title = 'Update Tournament'
+      this.Id = this.data.id
+      this.Title = 'Update Tournament'
       this.tournamentId = this.data.tournament ? this.data.tournament.id : null;
     }
     this.tournamentService.getTournaments().subscribe(data=>{
@@ -58,7 +59,7 @@ export class TeamCreateComponent implements OnInit {
     obj.name = this.name
     let tournamentT:any ={}
     tournamentT.id = this.tournamentId
-    obj.Tournament = tournamentT
+    obj.tournament = tournamentT
     this.teamService.postTeam(obj).subscribe(data=>{
       console.log(data)
     })
