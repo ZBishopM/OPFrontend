@@ -16,4 +16,7 @@ export class PlayerService {
   postPlayer(data:Player){
     return this.http.post<Player>(this.apiUrl,data)
   }
+  putPlayer(data:Player){
+    return this.http.put<Player>(this.apiUrl,data)
+  }
 }
