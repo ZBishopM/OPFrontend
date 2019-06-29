@@ -6,7 +6,13 @@ import { Statistics} from '../class/statistics';
   providedIn: 'root'
 })
 export class StatisticsService {
-  apiUrl = 'http://localhost:8080/api/player'
+  apiUrl = 'http://localhost:8080/api/statistics'
 
   constructor(private http: HttpClient) { }
+
+  getStatistics(){
+    return this.http.get<Statistics>(this.apiUrl);
+  }
+
+
 }
