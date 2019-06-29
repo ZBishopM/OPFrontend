@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PlayerCreateComponent } from '../player-create/player-create.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatTableDataSource } from '@angular/material';
 import { MatSort} from '@angular/material/sort';
 import { PlayerService } from '../player.service';
+import { Player } from 'src/app/class/player';
 
 @Component({
   selector: 'app-player-list',
@@ -11,7 +12,7 @@ import { PlayerService } from '../player.service';
 })
 export class PlayerListComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'gamePreferences', 'team'];
-  dataSource = []
+  dataSource:any = []
 
   constructor(public dialog:MatDialog,private playerService:PlayerService) { }
 
@@ -20,16 +21,23 @@ export class PlayerListComponent implements OnInit {
 
 
   ngOnInit() {
-      this.playerService.getPlayers().subscribe(data=>{this.dataSource = data})
+      this.listData()
   }
-  
+  listData(){
+    this.playerService.getPlayers().subscribe(data=>{this.dataSource = new MatTableDataSource(data)})
+  }
+  applyFilter(filterValue: string) {
+    console.log(filterValue)
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   openCreate(){
     const dialog = this.dialog.open(PlayerCreateComponent,{
       width:'700px',
       data: {}
     })
     dialog.afterClosed().subscribe(result=>{
-      //alert(`User chose ${result}`)
+      console.log(result)
+      this.listData()
     })
   }
 
