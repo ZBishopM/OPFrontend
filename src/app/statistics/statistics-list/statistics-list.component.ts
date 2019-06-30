@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 //import { StatisticsCreateComponent } from '../statistics-create/statistics-create.component';
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { MatSort} from '@angular/material/sort';
+import { Router } from '@angular/router';
 import { StatisticsService } from '../statistics.service';
 import { Statistics } from 'src/app/class/statistics';
 
@@ -14,7 +15,7 @@ export class StatisticsListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'player','match','team', 'damage', 'assists','kills','deaths'];
   dataSource:any = []
 
-  constructor(public dialog:MatDialog,private statisticsService:StatisticsService) { }
+  constructor(private router: Router,public dialog:MatDialog,private statisticsService:StatisticsService) { }
 
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -29,6 +30,9 @@ export class StatisticsListComponent implements OnInit {
   applyFilter(filterValue: string) {
     console.log(filterValue)
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  onSelect(element){
+    this.router.navigate(['/statisitcs/player',element.id])
   }
 
 }

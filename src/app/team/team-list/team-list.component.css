@@ -1,3 +1,6 @@
+h1{
+  margin-left: 40px;
+}
 .dataTable{
   padding-left: 20%;
 
@@ -8,4 +11,10 @@ mat-form-field{
 }
 table {
   width: 80%;
+}
+button{
+  /* margin-left: 20%; */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* padding-left: 20%; */
 }
