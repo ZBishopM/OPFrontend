@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatchService } from '../match.service';
 import { MatTableDataSource, MatSort } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-match-list',
@@ -11,7 +12,7 @@ export class MatchListComponent implements OnInit {
   displayedColumns: string[] = ['Fase', 'Winner' ,'Team1', 'Team2', 'Tournament'];
   dataSource:any = []
   Title = "Match"
-  constructor(private matchService:MatchService) { }
+  constructor(private router:Router,private matchService:MatchService) { }
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   ngOnInit() {
@@ -24,5 +25,8 @@ export class MatchListComponent implements OnInit {
   applyFilter(filterValue: string) {
     console.log(filterValue)
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  onSelect(element){
+    this.router.navigate(['/statistics/match/',element.id])
   }
 }
