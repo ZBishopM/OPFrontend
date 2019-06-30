@@ -17,6 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class TournamentCreateComponent implements OnInit {
   emailFormControl: FormControl;
+  winner: string = ''
   name: string = '';
   Ename : string = '';
   Egame: string = '';
@@ -53,6 +54,7 @@ export class TournamentCreateComponent implements OnInit {
       this.Id=this.data.id
       this.name=this.data.name
       this.game=this.data.game
+      this.winner=this.data.winner
       this.nteams=this.data.nteams
       let datee = new Date(this.data.date)
       datee.setDate(datee.getDate()+1)
@@ -96,13 +98,12 @@ export class TournamentCreateComponent implements OnInit {
     console.log(this.name)
     console.log(this.game)
     console.log(this.date)
-    console.log(this.nteams)
+    
     // console.log()
     let obj:any ={}
     obj.name=this.name
     obj.game=this.game
     obj.date=this.dateFormat(this.date)
-    obj.nteams=this.nteams
     let modeT:any ={}
     let playerT:any={}
     modeT.id=this.modeId
@@ -129,6 +130,8 @@ export class TournamentCreateComponent implements OnInit {
     obj.name=this.name
     obj.id=this.Id
     obj.game=this.game
+    obj.nteams=this.nteams
+    obj.winner=this.winner
     let modeT:any={}
     let playerT:any={}
     modeT.id=this.modeId
