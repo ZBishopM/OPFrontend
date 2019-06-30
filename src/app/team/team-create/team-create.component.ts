@@ -66,6 +66,9 @@ export class TeamCreateComponent implements OnInit {
     obj.tournament = tournamentT
     this.teamService.postTeam(obj).subscribe(data=>{
       console.log(data)
+      let res:any = data
+      if(res==false) this.toastService.success('Guardado exitoso!', 'Success!');
+      if(res!=true&&res!=false)this.toastService.error('Error', 'Oops!');
     },err=>{
       console.log("err", err)
       this.toastService.error('Error', `${err.error.mensaje}`);
