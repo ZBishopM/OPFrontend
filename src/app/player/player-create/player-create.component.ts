@@ -68,11 +68,15 @@ export class PlayerCreateComponent implements OnInit {
     let teamT:any = {}
     teamT.id = this.teamId
     obj.team = teamT
+    if(this.teamId==null) delete obj.team
     this.playerService.postPlayer(obj).subscribe(data=>{
-      console.log(data)
+      let res:any = data
+      if(res==true) this.toastService.success('You are awesome!', 'Success!');
+      if(res==false) this.toastService.error('Not completed', 'Oops!');
+      if(res!=true&&res!=false)this.toastService.error('OOF', 'Oops!');
     },err=>{
       console.log("err", err)
-      this.toastService.error('Error', `${err.error.mensaje}`);
+      this.toastService.error('Error de sistema', `${err.error.mensaje}`);
     })
   }
   update(){
@@ -83,13 +87,17 @@ export class PlayerCreateComponent implements OnInit {
     let teamT:any = {}
     teamT.id = this.teamId
     obj.team = teamT
-    if(this.teamId==null) delete obj.tournament
+    if(this.teamId==null) delete obj.team
+    console.log("obj", obj)
     this.playerService.putPlayer(obj).subscribe(data=>{
       console.log(data)
       let res:any = data
-      if(res==true) this.toastService.success('Actualización exitosa!', 'Success!');
-      if(res==false) this.toastService.error('Error en actualización!', 'Oops!');
-      if(res!=true&&res!=false)this.toastService.error('Error', 'Oops!');
+      if(res==true) this.toastService.success('You are awesome!', 'Success!');
+      if(res==false) this.toastService.error('This is not good!', 'Oops!');
+      if(res!=true&&res!=false)this.toastService.error('OOF', 'Oops!');
+    },err=>{
+      console.log("err", err)
+      this.toastService.error('Error de sistema', `${err.error.mensaje}`);
     })
   }
 }

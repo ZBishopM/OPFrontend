@@ -12,6 +12,7 @@ export class StatisticsPlayerComponent implements OnInit {
   displayedColumns: string[] = ['id', 'player','match','team', 'damage', 'assists','kills','deaths'];
   dataSource:any = []
   id=0;
+  Title=' '
   constructor(public dialog:MatDialog,private statisticsService:StatisticsService,private route: ActivatedRoute) { }
 
 
@@ -19,13 +20,16 @@ export class StatisticsPlayerComponent implements OnInit {
 
 
   ngOnInit() {
-    this.listData()
+
     let idT = parseInt(this.route.snapshot.paramMap.get('id'));
     console.log(idT);
     this.id = idT
+    this.listData()
   }
   listData(){
-    this.statisticsService.getStatisticsPlayer(this.id).subscribe(data=>{this.dataSource = new MatTableDataSource(data)})
+    let templayer:any = {}
+    this.statisticsService.getStatisticsPlayer(this.id).subscribe(data=>{templayer=data;this.Title='Statistics by '+ templayer[0].player.name;this.dataSource = new MatTableDataSource(data)})
+    
   }
   applyFilter(filterValue: string) {
     console.log(filterValue)

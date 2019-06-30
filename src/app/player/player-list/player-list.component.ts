@@ -3,6 +3,7 @@ import { PlayerCreateComponent } from '../player-create/player-create.component'
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { MatSort} from '@angular/material/sort';
 import { PlayerService } from '../player.service';
+import { Router } from '@angular/router';
 import { Player } from 'src/app/class/player';
 
 @Component({
@@ -14,7 +15,7 @@ export class PlayerListComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'gamePreferences', 'team','edit'];
   dataSource:any = []
 
-  constructor(public dialog:MatDialog,private playerService:PlayerService) { }
+  constructor(private router: Router, public dialog:MatDialog,private playerService:PlayerService) { }
 
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -51,5 +52,7 @@ export class PlayerListComponent implements OnInit {
       this.listData()
     })
   }
-
+  onSelect(element){
+    this.router.navigate(['/statistics/player/',element.id]);
+  }
 }

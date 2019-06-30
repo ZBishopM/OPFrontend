@@ -19,4 +19,10 @@ export class TournamentService {
   putTournament(data:Tournament){
     return this.http.put<Tournament>(this.apiUrl,data)
   }
+  generateTournament(data:Tournament){
+    let newUrl = this.apiUrl + `/${data.id}`;
+    console.log(data.id);
+    console.log(newUrl)
+    return this.http.put<Tournament>(newUrl,data);
+  }
 }

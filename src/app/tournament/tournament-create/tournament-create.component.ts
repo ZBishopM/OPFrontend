@@ -17,6 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class TournamentCreateComponent implements OnInit {
   emailFormControl: FormControl;
+  winner: string = ''
   name: string = '';
   Ename : string = '';
   Egame: string = '';
@@ -53,8 +54,12 @@ export class TournamentCreateComponent implements OnInit {
       this.Id=this.data.id
       this.name=this.data.name
       this.game=this.data.game
+      this.winner=this.data.winner
       this.nteams=this.data.nteams
-      this.date=this.data.date
+      let datee = new Date(this.data.date)
+      datee.setDate(datee.getDate()+1)
+      this.date=datee 
+      console.log(this.date)
       this.modeId=this.data.mode ? this.data.mode.id : null;
       this.playerId=this.data.player ? this.data.player.id : null;
       this.Title='Update Tournament'
@@ -72,7 +77,7 @@ export class TournamentCreateComponent implements OnInit {
     // now = new Date();
     let year = "" + now.getFullYear();
     let month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
-    let day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; }
+    let day = "" + (now.getDate()); if (day.length == 1) { day = "0" + day; }
     let hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; }
     let minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
     let second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
@@ -93,13 +98,12 @@ export class TournamentCreateComponent implements OnInit {
     console.log(this.name)
     console.log(this.game)
     console.log(this.date)
-    console.log(this.nteams)
+    
     // console.log()
     let obj:any ={}
     obj.name=this.name
     obj.game=this.game
     obj.date=this.dateFormat(this.date)
-    obj.nteams=this.nteams
     let modeT:any ={}
     let playerT:any={}
     modeT.id=this.modeId
@@ -122,9 +126,12 @@ export class TournamentCreateComponent implements OnInit {
   update(){
     let obj: any={}
     obj.date=this.dateFormat(this.date)
+    console.log("date",obj.date);
     obj.name=this.name
     obj.id=this.Id
     obj.game=this.game
+    obj.nteams=this.nteams
+    obj.winner=this.winner
     let modeT:any={}
     let playerT:any={}
     modeT.id=this.modeId

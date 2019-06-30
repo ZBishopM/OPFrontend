@@ -16,6 +16,7 @@ export class TournamentDetailComponent implements OnInit {
   ngOnInit() {
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
     console.log(id);
+    
   }
 
 }
