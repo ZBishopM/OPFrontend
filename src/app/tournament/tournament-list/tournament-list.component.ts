@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./tournament-list.component.css']
 })
 export class TournamentListComponent implements OnInit {
-  displayedColumns: string[]=['position','name','Game','Date','Winner','playerId','nTeams','modeId','edit'];
+  displayedColumns: string[]=['position','name','Game','Date','Winner','playerId','nTeams','modeId','edit','generate'];
   dataSource:any=[]
   //departments =[{"id":1,"name":"Hola"}]
 
@@ -75,5 +75,8 @@ export class TournamentListComponent implements OnInit {
   }
   onSelect(element){
     this.router.navigate(['/tournament',element.id]);
+  }
+  Generate(element){
+    this.tournamentService.generateTournament(element);
   }
 }
