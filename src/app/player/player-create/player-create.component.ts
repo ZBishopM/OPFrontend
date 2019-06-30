@@ -69,7 +69,10 @@ export class PlayerCreateComponent implements OnInit {
     teamT.id = this.teamId
     obj.team = teamT
     this.playerService.postPlayer(obj).subscribe(data=>{
-      console.log(data)
+      let res:any = data
+      if(res==true) this.toastService.success('You are awesome!', 'Success!');
+      if(res==false) this.toastService.error('This is not good!', 'Oops!');
+      if(res!=true&&res!=false)this.toastService.error('OOF', 'Oops!');
     },err=>{
       console.log("err", err)
       this.toastService.error('OOF', `${err.error.mensaje}`);
