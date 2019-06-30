@@ -2,7 +2,7 @@ export class Tournament {
     id:number
     name:String
     Game:String
-    Date:Date
+    date:any
     Winner:string
     playerId:number
     nTeams:number

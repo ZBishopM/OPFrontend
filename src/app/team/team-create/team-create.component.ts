@@ -34,6 +34,7 @@ export class TeamCreateComponent implements OnInit {
       this.name = this.data.name
       this.Id = this.data.id
       this.Title = 'Update Team'
+      this.nmembers=this.data.nmembers
       this.tournamentId = this.data.tournament ? this.data.tournament.id : null;
     }
     this.tournamentService.getTournaments().subscribe(data=>{
