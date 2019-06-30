@@ -19,10 +19,11 @@ export class StatisticsMatchComponent implements OnInit {
 
 
   ngOnInit() {
-    this.listData()
+
     let idT = parseInt(this.route.snapshot.paramMap.get('id'));
     console.log(idT);
     this.id = idT
+    this.listData()
   }
   listData(){
     this.statisticsService.getStatisticsMatch(this.id).subscribe(data=>{this.dataSource = new MatTableDataSource(data)})

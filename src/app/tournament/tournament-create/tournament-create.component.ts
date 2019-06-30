@@ -54,7 +54,8 @@ export class TournamentCreateComponent implements OnInit {
       this.name=this.data.name
       this.game=this.data.game
       this.nteams=this.data.nteams
-      this.date=this.data.date
+      this.date=new Date(this.dateFormat(new Date(this.data.date)))
+      console.log(this.date)
       this.modeId=this.data.mode ? this.data.mode.id : null;
       this.playerId=this.data.player ? this.data.player.id : null;
       this.Title='Update Tournament'
@@ -72,7 +73,7 @@ export class TournamentCreateComponent implements OnInit {
     // now = new Date();
     let year = "" + now.getFullYear();
     let month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
-    let day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; }
+    let day = "" + (now.getDate()); if (day.length == 1) { day = "0" + day; }
     let hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; }
     let minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
     let second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
@@ -122,6 +123,7 @@ export class TournamentCreateComponent implements OnInit {
   update(){
     let obj: any={}
     obj.date=this.dateFormat(this.date)
+    console.log("date",obj.date);
     obj.name=this.name
     obj.id=this.Id
     obj.game=this.game
