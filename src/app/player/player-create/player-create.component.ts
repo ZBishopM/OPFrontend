@@ -5,7 +5,7 @@ import { RepDialogComponent } from '../rep-dialog/rep-dialog.component';
 import { PlayerService } from '../player.service';
 import {MAT_DIALOG_DATA} from '@angular/material';
 import { TeamService } from 'src/app/team/team.service';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-player-create',
@@ -24,7 +24,8 @@ export class PlayerCreateComponent implements OnInit {
   Teams:any=[]
 
   constructor(public dialog:MatDialog , private playerService:PlayerService,
-    @Inject(MAT_DIALOG_DATA) public data: any, private teamService:TeamService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private teamService:TeamService,
+    private toastService:ToastrService) { }
 
   ngOnInit() {
     this.emailFormControl = new FormControl('',[
@@ -69,6 +70,9 @@ export class PlayerCreateComponent implements OnInit {
     obj.team = teamT
     this.playerService.postPlayer(obj).subscribe(data=>{
       console.log(data)
+    },err=>{
+      console.log("err", err)
+      this.toastService.error('OOF', `${err.error.mensaje}`);
     })
   }
   update(){
@@ -82,6 +86,10 @@ export class PlayerCreateComponent implements OnInit {
     if(this.teamId==null) delete obj.tournament
     this.playerService.putPlayer(obj).subscribe(data=>{
       console.log(data)
+      let res:any = data
+      if(res==true) this.toastService.success('You are awesome!', 'Success!');
+      if(res==false) this.toastService.error('This is not good!', 'Oops!');
+      if(res!=true&&res!=false)this.toastService.error('OOF', 'Oops!');
     })
   }
 }

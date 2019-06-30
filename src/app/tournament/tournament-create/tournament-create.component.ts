@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import{FormControl,Validators} from '@angular/forms';
+import { FormControl,Validators} from '@angular/forms';
 import { MatDialog, MatDialogRef} from "@angular/material";
 import { RepDialogComponent } from '../rep-dialog/rep-dialog.component';
 import { TournamentService } from '../tournament.service';
@@ -128,7 +128,7 @@ export class TournamentCreateComponent implements OnInit {
     let modeT:any={}
     let playerT:any={}
     modeT.id=this.modeId
-    obj.mode=modeT
+    obj.mode=modeT  
     playerT.id=this.playerId
     obj.player=playerT
     this.tournamentService.putTournament(obj).subscribe(data=>{
