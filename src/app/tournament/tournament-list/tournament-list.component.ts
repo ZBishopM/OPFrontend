@@ -33,7 +33,10 @@ export class TournamentListComponent implements OnInit {
     let thisData:any = [];
     this.tournamentService.getTournaments().subscribe(data=>{
       for (let i = 0; i < data.length; i++) {
-        data[i].date = this.dateFormat(new Date(data[i].date))
+        //console.log(new Date(data[i].date))
+        let datee = new Date(data[i].date)
+        datee.setDate(datee.getDate()+1)
+        data[i].date = this.dateFormat(new Date(datee))
         console.log(data[i].date)
       }
       this.dataSource= new MatTableDataSource(data);})

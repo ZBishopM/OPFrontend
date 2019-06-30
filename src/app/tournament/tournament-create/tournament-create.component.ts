@@ -54,7 +54,9 @@ export class TournamentCreateComponent implements OnInit {
       this.name=this.data.name
       this.game=this.data.game
       this.nteams=this.data.nteams
-      this.date=new Date(this.dateFormat(new Date(this.data.date)))
+      let datee = new Date(this.data.date)
+      datee.setDate(datee.getDate()+1)
+      this.date=datee 
       console.log(this.date)
       this.modeId=this.data.mode ? this.data.mode.id : null;
       this.playerId=this.data.player ? this.data.player.id : null;
