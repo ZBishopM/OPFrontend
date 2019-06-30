@@ -23,8 +23,6 @@ export class TournamentService {
     let newUrl = this.apiUrl + `/${data.id}`;
     console.log(data.id);
     console.log(newUrl)
-    return this.http.put<Tournament>(newUrl,data).subscribe(data=>{
-      console.log(data)
-    });
+    return this.http.put<Tournament>(newUrl,data);
   }
 }

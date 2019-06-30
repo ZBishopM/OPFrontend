@@ -6,6 +6,7 @@ import {MatSort} from '@angular/material/sort';
 import {TournamentService} from '../tournament.service';
 import {Tournament} from 'src/app/class/tournament';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tournament-list',
@@ -17,7 +18,8 @@ export class TournamentListComponent implements OnInit {
   dataSource:any=[]
   //departments =[{"id":1,"name":"Hola"}]
 
-  constructor(private router: Router, public dialog:MatDialog,private tournamentService:TournamentService) { }
+  constructor(private router: Router, public dialog:MatDialog,private tournamentService:TournamentService,
+    private toastService:ToastrService) { }
 
   @ViewChild(MatSort,{static: true}) sort: MatSort;
   @Output() object = new EventEmitter<any>()
@@ -78,6 +80,13 @@ export class TournamentListComponent implements OnInit {
   }
   Generate(element){
     console.log("hola funciono xd")
-    this.tournamentService.generateTournament(element);
+    this.tournamentService.generateTournament(element).subscribe(data=>{
+      console.log("data",data)
+      let res:any = data
+      if(res==true) this.toastService.success('Data generated', 'Success!');
+      if(res==false) this.toastService.error('Validation error', 'Oops!');
+      if(res!=true&&res!=false)this.toastService.error('ERROR', 'Oops!');
+    }
+    );
   }
 }
