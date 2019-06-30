@@ -68,7 +68,7 @@ export class TeamCreateComponent implements OnInit {
       console.log(data)
     },err=>{
       console.log("err", err)
-      this.toastService.error('OOF', `${err.error.mensaje}`);
+      this.toastService.error('Error', `${err.error.mensaje}`);
     })
   }
 
@@ -84,9 +84,9 @@ export class TeamCreateComponent implements OnInit {
     this.teamService.putTeam(obj).subscribe(data=>{
       console.log(data)
       let res:any = data
-      if(res==true) this.toastService.success('You are awesome!', 'Success!');
-      if(res==false) this.toastService.error('This is not good!', 'Oops!');
-      if(res!=true&&res!=false)this.toastService.error('OOF', 'Oops!');
+      if(res==true) this.toastService.success('Actualización exitosa!', 'Success!');
+      if(res==false) this.toastService.error('Error en actualización!', 'Oops!');
+      if(res!=true&&res!=false)this.toastService.error('Error', 'Oops!');
     })
   }
 
