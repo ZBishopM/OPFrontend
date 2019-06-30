@@ -19,4 +19,8 @@ export class MatchService {
   putMatch(data:Match){
     return this.http.put<Match>(this.apiUrl,data)
   }
+  getMatchsTournament(id){
+    let newUrl= this.apiUrl + `/tournament/${id}`
+    return this.http.get<Match[]>(newUrl);
+  }
 }

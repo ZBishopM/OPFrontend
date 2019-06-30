@@ -13,4 +13,12 @@ export class StatisticsService {
   getStatistics(){
     return this.http.get<Statistics[]>(this.apiUrl);
   }
+  getStatisticsMatch(id){
+    let newUrl= this.apiUrl + `/match/${id}`
+    return this.http.get<Statistics[]>(newUrl);
+  }
+  getStatisticsPlayer(id){
+    let newUrl= this.apiUrl + `/player/${id}`
+    return this.http.get<Statistics[]>(newUrl);
+  }
 }

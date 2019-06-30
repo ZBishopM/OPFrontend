@@ -13,8 +13,10 @@ import { MatInputModule } from "@angular/material/input";
 import {MatCardModule} from '@angular/material/card';
 import { StatisticsService } from './statistics.service';
 import { MatIconModule } from '@angular/material';
+import { StatisticsMatchComponent } from './statistics-match/statistics-match.component';
+import { StatisticsPlayerComponent } from './statistics-player/statistics-player.component';
 @NgModule({
-  declarations: [StatisticsListComponent],
+  declarations: [StatisticsListComponent, StatisticsMatchComponent, StatisticsPlayerComponent],
   imports: [
     CommonModule,
     StatisticsRoutingModule,
