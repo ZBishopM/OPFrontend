@@ -83,10 +83,12 @@ export class TournamentListComponent implements OnInit {
     this.tournamentService.generateTournament(element).subscribe(data=>{
       console.log("data",data)
       let res:any = data
+      this.listData()
       if(res==true) this.toastService.success('Data generated', 'Success!');
       if(res==false) this.toastService.error('Validation error', 'Oops!');
       if(res!=true&&res!=false)this.toastService.error('ERROR', 'Oops!');
     }
     );
+    
   }
 }
