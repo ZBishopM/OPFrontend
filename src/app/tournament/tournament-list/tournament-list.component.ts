@@ -7,6 +7,7 @@ import {TournamentService} from '../tournament.service';
 import {Tournament} from 'src/app/class/tournament';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { MatchService } from 'src/app/match/match.service';
 
 @Component({
   selector: 'app-tournament-list',
@@ -19,6 +20,7 @@ export class TournamentListComponent implements OnInit {
   //departments =[{"id":1,"name":"Hola"}]
 
   constructor(private router: Router, public dialog:MatDialog,private tournamentService:TournamentService,
+    private matchService:MatchService,
     private toastService:ToastrService) { }
 
   @ViewChild(MatSort,{static: true}) sort: MatSort;
@@ -74,7 +76,9 @@ export class TournamentListComponent implements OnInit {
     })
   }
   onSelect(element){
-    this.router.navigate(['/tournament',element.id]);
+    console.log(element.id);
+    this.router.navigate(['match/','/tournament/',element.id]);
+    //this.router.navigate(['tournament/',element.id]);
   }
   Generate(element){
     console.log("hola funciono xd")
