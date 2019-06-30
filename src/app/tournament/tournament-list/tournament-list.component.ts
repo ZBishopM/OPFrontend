@@ -77,6 +77,7 @@ export class TournamentListComponent implements OnInit {
     this.router.navigate(['/tournament',element.id]);
   }
   Generate(element){
+    console.log("hola funciono xd")
     this.tournamentService.generateTournament(element);
   }
 }
