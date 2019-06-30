@@ -80,7 +80,7 @@ export class TournamentListComponent implements OnInit {
   }
   onSelect(element){
     console.log(element.id);
-    this.router.navigate(['match/','/tournament/',element.id]);
+    this.router.navigate(['/match/',element.id]);
     //this.router.navigate(['tournament/',element.id]);
   }
   Generate(element){

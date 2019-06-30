@@ -9,7 +9,7 @@
           <ng-container matColumnDef="Fase">
             
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Fase </th>
-            <td mat-cell *matCellDef="let element">   {{element.fase}} </td>
+            <td mat-cell (click)="onSelect(element)" *matCellDef="let element">   {{element.fase}} </td>
           </ng-container>
         
           <!-- Name Column -->
